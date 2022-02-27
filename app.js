@@ -1,6 +1,9 @@
 document.getElementById('search-button').addEventListener('click', function () {
     const searchInput = document.getElementById('search-input');
     const searchInputValue = searchInput.value;
+    if (searchInputValue == '') {
+        return alert('Please enter the product name!')
+    }
     searchInput.value = '';
     const url = (`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInputValue}`)
     fetch(url)
@@ -9,7 +12,10 @@ document.getElementById('search-button').addEventListener('click', function () {
 });
 
 const displayData = products => {
+    const mainContainer = document.getElementById('main-container');
+    mainContainer.textContent = "";
     const cardContainer = document.getElementById('card-container');
+    cardContainer.textContent = "";
     for (const product of products) {
         console.log(product)
         const div = document.createElement('div');
@@ -41,6 +47,7 @@ const getDetailsId = id => {
 const displayDetails = data => {
     console.log(data)
     const mainContainer = document.getElementById('main-container');
+    mainContainer.textContent = "";
     const div = document.createElement('div');
     div.classList.add('bg-white')
     div.classList.add('text-black')
