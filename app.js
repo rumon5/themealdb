@@ -1,7 +1,7 @@
 document.getElementById('search-button').addEventListener('click', function () {
     const searchInput = document.getElementById('search-input');
     const searchInputValue = searchInput.value;
-    if (searchInputValue == '') {
+    if (searchInputValue == '' || isNaN(searchInputValue) == false) {
         return alert('Please enter the product name!')
     }
     searchInput.value = '';
@@ -25,7 +25,7 @@ const displayData = products => {
                 <img src="${product.strMealThumb}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${product.strMeal}</h5>
-                    <p class="card-text">${product.strInstructions.slice(0, 150)}</p>
+                    <p class="card-text">${product.strInstructions.slice(0, 145)}</p>
                     <a href="#main-container" style="text-decoration: none;">
                     <button type="button" onclick="getDetailsId(${product.idMeal})" class="btn btn-primary active">See
                         details</button>
